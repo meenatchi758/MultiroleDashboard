@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "base.html" %}
+{% block title %}{{ 'Edit' if 'edit' in request.path else 'Add' }} Product{% endblock %}
+{% block content %}
+<h3>{{ 'Edit' if 'edit' in request.path else 'Add' }} Product</h3>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">{{ form.name.label }} {{ form.name(class="form-control") }}</div>
+    <div class="mb-3">{{ form.price.label }} {{ form.price(class="form-control") }}</div>
+    {{ form.submit(class="btn btn-primary") }}
+    <a href="{{ url_for('seller_dashboard') }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
+
+</body>
+</html>
